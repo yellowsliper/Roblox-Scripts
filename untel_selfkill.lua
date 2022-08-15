@@ -1,6 +1,6 @@
 local RunService = game:GetService("RunService")
 local lcplr = game.Players.LocalPlayer
-local maker = "\115\97\104\97\95\49\52\49\50"
+local maker = "saha_1412"
 
 function update()
     for _,p in pairs(game.Players:GetChildren()) do
