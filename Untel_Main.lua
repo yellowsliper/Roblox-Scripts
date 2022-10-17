@@ -210,6 +210,49 @@ local G = cb.Button({
 })
 
 local H = cb.Toggle({
+	Text = "Auto Shoot Gun",
+	Callback = function(Value)
+	    _G.Destroys = (Value)
+	    while _G.Destroys do
+		    wait()
+		local num = math.random(1, #game.Players:GetChildren())
+
+		local args = {
+		[1] = game.Players:GetChildren()[num].Character.Humanoid
+		}
+
+			if game.Players.LocalPlayer ~= game.Players:GetChildren()[num] then
+			    if game.Players.LocalPlayer:FindFirstChild("SISD", true) ~= game:FindFirstChild("pistol", true) then
+				    game:FindFirstChild("pistol", true).RemoteEvent:FireServer(unpack(args))
+				end
+			end
+		end
+	end,
+	Enabled = false
+})
+
+local H = cb.Toggle({
+	Text = "Auto Suicide Gun",
+	Callback = function(Value)
+	    _G.Destroys = (Value)
+	    while _G.Destroys do
+		    wait()
+    	    for i, v in pairs(game.Workspace:GetChildren()) do
+    	        if game.Players.LocalPlayer.Character.Humanoid.Parent ~= v then
+        	        if v:FindFirstChild("pistol", true) then
+        	            local args = {
+	                        [1] = v.Humanoid
+	                    }
+	            	    v:FindFirstChild("pistol", true).RemoteEvent:FireServer(unpack(args))
+	        	    end
+	    	    end
+    	    end
+	    end
+	end,
+	Enabled = false
+})
+
+local H = cb.Toggle({
 	Text = "Auto Get Gun",
 	Callback = function(Value)
 	    _G.Destroys1 = (Value)
