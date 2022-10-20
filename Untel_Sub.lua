@@ -1,13 +1,6 @@
 if not game:IsLoaded() then game.Loaded:Wait() end
 
 coroutine.resume(coroutine.create(function()
-    Host = "saha_1412"
-    OnHost = true
-    Prefix = "~"
-    loadstring(game:HttpGet("https://raw.githubusercontent.com/sy-nn/synergy/additional/altcontrol",true))()
-end))
-
-coroutine.resume(coroutine.create(function()
     local client = game.Players.LocalPlayer
     client.CharacterAdded:Wait()
     client.Character:WaitForChild("Humanoid")
