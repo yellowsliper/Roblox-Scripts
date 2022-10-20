@@ -5,9 +5,6 @@ coroutine.resume(coroutine.create(function()
     OnHost = true
     Prefix = "~"
     loadstring(game:HttpGet("https://raw.githubusercontent.com/sy-nn/synergy/additional/altcontrol",true))()
-    while wait() do
-        print() 
-    end
 end))
 
 coroutine.resume(coroutine.create(function()
