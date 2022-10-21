@@ -1,0 +1,13 @@
+env.sound = {}
+
+file['play_sound'] = function(URL)
+    local Sound_File_Name = syn.crypt.random(10)
+
+    writefile(Sound_File_Name..'.mp3', syn.request({Url=URL}).Body)
+
+    local Sound = Instance.new('Sound')
+    Sound.SoundId = getsynasset(Sound_File_Name..'.mp3')
+    Sound.Parent = game:GetService('Workspace')
+    
+    return Sound
+end

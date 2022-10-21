@@ -1,0 +1,20 @@
+env.requests = {}
+
+local methods = {'get','post','patch'}
+
+for _, method in pairs(methods) do
+    requests[method] = function(url, headers)
+        local res = syn.request({
+            Url = url or '',
+            Headers = headers or {},
+            Method = method:upper()
+        }) 
+        return {
+            text = res.Body,
+            json = function()
+                return game:GetService("HttpService"):JSONDecode(res.Body) 
+            end,
+            headers = res.Headers
+        }
+    end
+end

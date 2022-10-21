@@ -1,0 +1,48 @@
+env.file = {}
+
+file['show_files'] = function(Extension)
+    Files = {}
+
+    for _, v in listfiles('/') do
+        if tostring(v:split('.')[2]) == Extension then
+            table.insert(Files, v)
+        end
+    end
+    
+    return Files
+end
+
+file['folder_contents'] = function(f)
+    local files = listfiles(f or '/')
+    local contents = {}
+    
+    for i,v in pairs(files) do
+        if isfile(v) then
+            contents[v] = readfile(v)
+        elseif isfolder(v) then
+            local cs = file.getfoldercontents(v)
+            contents[v] = cs
+        end
+    end
+    
+    return contents
+end
+
+file['size'] = function(File, Unit, Byte)
+    Units = {'bytes', 'kilobytes', 'megabytes', 'gigabytes'}
+    UnitInt = {1, 1024, 1024^2, 1024^3}
+
+    if Byte then
+        if table.find(Units, Unit) then
+            utf8.len(readfile(File))/UnitInt[table.find(Units, Unit)]
+        else
+            rconsoleerr("Unit doesn't exist / Out of range.")
+        end
+    else
+        if table.find(Units, Unit) then
+            string.len(readfile(File))/UnitInt[table.find(Units, Unit)]
+        else
+            rconsoleerr("Unit doesn't exist / Out of range.")
+        end
+    end
+end
