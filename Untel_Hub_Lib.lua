@@ -34,10 +34,10 @@ Themes = {
 			StrongText = Color3.fromHSV(0, 0, 1),		
 			WeakText = Color3.fromHSV(0, 0, 172/255)
 		},
-		Rust = {
+		Halloween  = {
 			Main = Color3.fromRGB(37, 35, 33),
-			Secondary = Color3.fromRGB(65, 63, 63),
-			Tertiary = Color3.fromRGB(237, 94, 38),
+			Secondary = Color3.fromRGB(33, 32, 32),
+			Tertiary = Color3.fromRGB(255, 106, 0),
 
 			StrongText = Color3.fromHSV(0, 0, 1),		
 			WeakText = Color3.fromHSV(0, 0, 172/255)
@@ -48,14 +48,6 @@ Themes = {
 			Tertiary = Color3.fromRGB(51, 153, 137),
 
 			StrongText = Color3.fromHSV(0, 0, 1),        
-			WeakText = Color3.fromHSV(0, 0, 172/255)
-		},
-        Halloween = {
-			Main = Color3.fromRGB(37, 35, 33),
-			Secondary = Color3.fromRGB(33, 32, 32),
-			Tertiary = Color3.fromRGB(255, 106, 0),
-
-			StrongText = Color3.fromHSV(0, 0, 1),		
 			WeakText = Color3.fromHSV(0, 0, 172/255)
 		},
 		Vaporwave = {},
