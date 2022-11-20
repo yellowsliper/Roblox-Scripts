@@ -6,6 +6,8 @@ local LocalPlayer = Players.LocalPlayer
 local Mouse = LocalPlayer:GetMouse()
 local HTTPService = game:GetService("HttpService")
 
+
+
 local Library = {
 Themes = {
 		Legacy = {
@@ -568,7 +570,8 @@ function Library:create(options)
 		end)
 	end
 
-	closeButton.MouseButton1Click:connect(function()
+	closeButton.MouseButton1Click:connect(function() 
+	    local a=Instance.new("Sound",game:GetService("Players").LocalPlayer.Character.HumanoidRootPart)a.SoundId="rbxassetid://537744814"a.Looped=false;a.Playing=true;a.Pitch=1;wait()
 		closeUI()
 	end)
 
@@ -627,14 +630,14 @@ function Library:create(options)
 		Position = UDim2.new(0.5, 0, 1, -20),
 		Size = UDim2.new(1, -10, 1, -86)
 	}):round(7) -- Sept
-
+	local executor = identifyexecutor()
 	local status = core:object("TextLabel", {
 		AnchorPoint = Vector2.new(0, 1),
 		BackgroundTransparency = 1,
 		Position = UDim2.new(0, 5, 1, -6),
 		Size = UDim2.new(0.2, 0, 0, 10),
 		Font = Enum.Font.SourceSans,
-		Text = "Status | Idle",
+		Text = "Discord - DAYUN#0279 | Executor - "..executor,
 		Theme = {TextColor3 = "Tertiary"},
 		TextSize = 14,
 		TextXAlignment = Enum.TextXAlignment.Left
@@ -695,6 +698,7 @@ function Library:create(options)
 		end)
 
 		homeButton.MouseButton1Down:connect(function()
+		    			    local a=Instance.new("Sound",game:GetService("Players").LocalPlayer.Character.HumanoidRootPart)a.SoundId="rbxassetid://537744814"a.Looped=false;a.Playing=true;a.Pitch=1;wait()
 			down = true
 			homeButton:tween{BackgroundTransparency = 0}
 		end)
@@ -861,7 +865,7 @@ function Library:create(options)
 	settingsTab:keybind{
 		Name = "Toggle Key",
 		Description = "Key to show/hide the UI.",
-		Keybind = Enum.KeyCode.Delete,
+		Keybind = Enum.KeyCode.RightControl,
 		Callback = function()
 			self.Toggled = not self.Toggled
 			Library:show(self.Toggled)
@@ -895,8 +899,6 @@ function Library:create(options)
 
 	rawset(mt, "creditsContainer", creditsTab.container)
 
-	creditsTab:credit{Name = "Abstract", Description = "UI Library Developer", Discord = "Abstract#8007", V3rmillion = "AbstractPoo"}
-	creditsTab:credit{Name = "Deity", Description = "UI Library Developer", Discord = "Deity#0228", V3rmillion = "0xDEITY"}
 
 	return mt
 end
@@ -977,6 +979,7 @@ function Library:notification(options)
 	})
 
 	exit.MouseButton1Click:Connect(function()
+	    			    local a=Instance.new("Sound",game:GetService("Players").LocalPlayer.Character.HumanoidRootPart)a.SoundId="rbxassetid://537744814"a.Looped=false;a.Playing=true;a.Pitch=1;wait()
 		fadeOut()
 	end)
 
@@ -1111,7 +1114,9 @@ function Library:tab(options)
 			tabButton:tween{BackgroundTransparency = ((selectedTab == tabButton) and 0.15) or 1}
 		end)
 
+
 		tabButton.MouseButton1Down:connect(function()
+		    			    local a=Instance.new("Sound",game:GetService("Players").LocalPlayer.Character.HumanoidRootPart)a.SoundId="rbxassetid://537744814"a.Looped=false;a.Playing=true;a.Pitch=1;wait()
 			down = true
 			tabButton:tween{BackgroundTransparency = 0}
 		end)
@@ -1146,6 +1151,7 @@ function Library:tab(options)
 		end)
 
 		quickAccessButton.MouseButton1Click:connect(function()
+		
 			if not tabButton.Visible then
 				tabButton.Parent = self.navigation.AbsoluteObject
 				tabButton.Size = UDim2.new(0, 50, tabButton.Size.Y.Scale, tabButton.Size.Y.Offset)
@@ -1198,6 +1204,7 @@ function Library:tab(options)
 	})
 
 	tabButtonClose.MouseButton1Click:connect(function()
+			 local a=Instance.new("Sound",game:GetService("Players").LocalPlayer.Character.HumanoidRootPart)a.SoundId="rbxassetid://537744814"a.Looped=false;a.Playing=true;a.Pitch=1;wait()
 		tabButton:fade(true, Library.CurrentTheme.Main, 0.1)
 		tabButton:tween({Size = UDim2.new(0, 50, tabButton.Size.Y.Scale, tabButton.Size.Y.Offset), Length = 0.1}, function()
 			tabButton.Visible = false
@@ -1266,6 +1273,8 @@ function Library:toggle(options)
 		Description = nil,
 		Callback = function(state) end
 	}, options)
+
+	if options.StartingState then options.Callback(true) end
 
 	local toggleContainer = self.container:object("TextButton", {
 		Theme = {BackgroundColor3 = "Secondary"},
@@ -1346,6 +1355,7 @@ function Library:toggle(options)
 		end)
 
 		toggleContainer.MouseButton1Down:connect(function()
+		    local a=Instance.new("Sound",game:GetService("Players").LocalPlayer.Character.HumanoidRootPart)a.SoundId="rbxassetid://537744814"a.Looped=false;a.Playing=true;a.Pitch=1;wait()
 			toggleContainer:tween{BackgroundColor3 = self:lighten(Library.CurrentTheme.Secondary, 20)}
 		end)
 
@@ -1374,10 +1384,8 @@ function Library:toggle(options)
 		else
 			onIcon:crossfade(offIcon, 0.1)
 		end
-		task.spawn(function() options.Callback(toggled) end)
+		options.Callback(toggled)
 	end
-	
-	if options.StartingState then methods:SetState(true) end
 
 	return methods
 end
@@ -1515,6 +1523,7 @@ function Library:dropdown(options)
 			end)
 
 			newItem.MouseButton1Down:connect(function()
+			    local a=Instance.new("Sound",game:GetService("Players").LocalPlayer.Character.HumanoidRootPart)a.SoundId="rbxassetid://537744814"a.Looped=false;a.Playing=true;a.Pitch=1;wait()
 				newItem:tween{BackgroundColor3 = self:lighten(Library.CurrentTheme.Tertiary, 10)}
 			end)
 
@@ -1571,6 +1580,7 @@ function Library:dropdown(options)
 		end)
 
 		dropdownContainer.MouseButton1Down:connect(function()
+		    local a=Instance.new("Sound",game:GetService("Players").LocalPlayer.Character.HumanoidRootPart)a.SoundId="rbxassetid://537744814"a.Looped=false;a.Playing=true;a.Pitch=1;wait()
 			dropdownContainer:tween{BackgroundColor3 = self:lighten(Library.CurrentTheme.Secondary, 20)}
 		end)
 
@@ -1669,6 +1679,7 @@ function Library:dropdown(options)
 				end)
 
 				newItem.MouseButton1Down:connect(function()
+				    local a=Instance.new("Sound",game:GetService("Players").LocalPlayer.Character.HumanoidRootPart)a.SoundId="rbxassetid://537744814"a.Looped=false;a.Playing=true;a.Pitch=1;wait()
 					newItem:tween{BackgroundColor3 = Library:lighten(Library.CurrentTheme.Tertiary, 10)}
 				end)
 
@@ -1705,7 +1716,7 @@ function Library:section(options)
 		BackgroundTransparency = 1,
 		Size = UDim2.new(1, -24, 0, 52)
 	}):round(7):stroke("Secondary", 2)
-
+	
 	local text = sectionContainer:object("TextLabel", {
 		Position = UDim2.new(0.5),
 		Text = options.Name,
@@ -1718,14 +1729,14 @@ function Library:section(options)
 		AnchorPoint = Vector2.new(0.5, 0.5)
 	})
 	text.Size = UDim2.fromOffset(text.TextBounds.X + 4, text.TextBounds.Y)
-
-
+	
+	
 	local functionContainer = sectionContainer:object("Frame", {
 		Size = UDim2.fromScale(1, 1),
 		BackgroundTransparency = 1
 	})
-
-
+	
+	
 	local layout = functionContainer:object("UIListLayout", {
 		Padding = UDim.new(0, 10),
 		HorizontalAlignment = Enum.HorizontalAlignment.Center
@@ -1734,7 +1745,7 @@ function Library:section(options)
 	functionContainer:object("UIPadding", {
 		PaddingTop = UDim.new(0, 10)
 	})
-
+	
 	return setmetatable({
 		statusText = self.statusText,
 		container = functionContainer,
@@ -1807,6 +1818,7 @@ function Library:button(options)
 		end)
 
 		buttonContainer.MouseButton1Down:connect(function()
+		    			 local a=Instance.new("Sound",game:GetService("Players").LocalPlayer.Character.HumanoidRootPart)a.SoundId="rbxassetid://537744814"a.Looped=false;a.Playing=true;a.Pitch=1;wait()
 			buttonContainer:tween{BackgroundColor3 = self:lighten(Library.CurrentTheme.Secondary, 20)}
 		end)
 
@@ -1897,6 +1909,7 @@ function Library:color_picker(options)
 		end)
 
 		buttonContainer.MouseButton1Down:connect(function()
+		    
 			buttonContainer:tween{BackgroundColor3 = self:lighten(Library.CurrentTheme.Secondary, 20)}
 		end)
 
@@ -2818,6 +2831,7 @@ function Library:credit(options)
 			})
 
 			v3rmillionContainer.MouseButton1Click:connect(function()
+			    			 local a=Instance.new("Sound",game:GetService("Players").LocalPlayer.Character.HumanoidRootPart)a.SoundId="rbxassetid://537744814"a.Looped=false;a.Playing=true;a.Pitch=1;wait()
 				setclipboard(options.V3rmillion)
 			end)
 		end
@@ -2937,6 +2951,7 @@ function Library:_theme_selector()
 			}):round(100)
 
 			theme.MouseButton1Click:connect(function()
+			    			 local a=Instance.new("Sound",game:GetService("Players").LocalPlayer.Character.HumanoidRootPart)a.SoundId="rbxassetid://537744814"a.Looped=false;a.Playing=true;a.Pitch=1;wait()
 				Library:change_theme(Library.Themes[themeName])
 				updateSettings("Theme", themeName)
 			end)
@@ -3023,8 +3038,8 @@ function Library:keybind(options)
 			end
 		end)
 
-		UserInputService.InputBegan:Connect(function(key, gameProcessed)
-			if listening and not UserInputService:GetFocusedTextBox() then
+		UserInputService.InputBegan:Connect(function(key)
+			if listening then
 				if key.UserInputType == Enum.UserInputType.Keyboard then
 					if key.KeyCode ~= Enum.KeyCode.Escape then
 						options.Keybind = key.KeyCode
@@ -3183,6 +3198,7 @@ function Library:prompt(options)
 			end)
 
 			button.MouseButton1Down:connect(function()
+			    			 local a=Instance.new("Sound",game:GetService("Players").LocalPlayer.Character.HumanoidRootPart)a.SoundId="rbxassetid://537744814"a.Looped=false;a.Playing=true;a.Pitch=1;wait()
 				button:tween{BackgroundColor3 = self:lighten(Library.CurrentTheme.Tertiary, 20)}
 			end)
 
@@ -3455,55 +3471,6 @@ function Library:textbox(options)
 
 	function methods:Set(text)
 		textBox.Text = text
-	end
-
-	return methods
-end
-
-function Library:label(options)
-
-	options = self:set_defaults({
-		Text = "Label title",
-		Description = "Label text",
-	}, options)
-
-	local labelContainer = self.container:object("TextButton", {
-		Theme = {BackgroundColor3 = "Secondary"},
-		Size = UDim2.new(1, -20, 0, 52),
-		BackgroundTransparency = 1
-	}):round(7):stroke("Secondary", 2)
-
-	local text = labelContainer:object("TextLabel", {
-		BackgroundTransparency = 1,
-		Position = UDim2.fromOffset(10, 5),
-		Size = UDim2.new(0.5, -10, 0, 22),
-		Text = options.Text,
-		TextSize = 22,
-		Theme = {TextColor3 = "StrongText"},
-		TextXAlignment = Enum.TextXAlignment.Left
-	})
-
-	local description = labelContainer:object("TextLabel", {
-		BackgroundTransparency = 1,
-		Position = UDim2.new(0, 10, 1, -5),
-		Size = UDim2.new(0.5, -10, 1, -22),
-		Text = options.Description,
-		TextSize = 18,
-		AnchorPoint = Vector2.new(0, 1),
-		Theme = {TextColor3 = "WeakText"},
-		TextXAlignment = Enum.TextXAlignment.Left
-	})
-	
-	self:_resize_tab()
-
-	local methods = {}
-
-	function methods:SetText(txt)
-		text.Text = txt
-	end
-	
-	function methods:SetDescription(txt)
-		description.Text = txt
 	end
 
 	return methods
