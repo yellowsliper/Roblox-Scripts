@@ -7,7 +7,7 @@ local Mouse = LocalPlayer:GetMouse()
 local HTTPService = game:GetService("HttpService")
 
 local Library = {
-	Themes = {
+Themes = {
 		Legacy = {
 			Main = Color3.fromHSV(262/360, 60/255, 34/255),
 			Secondary = Color3.fromHSV(240/360, 40/255, 63/255),
@@ -48,10 +48,20 @@ local Library = {
 			StrongText = Color3.fromHSV(0, 0, 1),        
 			WeakText = Color3.fromHSV(0, 0, 172/255)
 		},
+        Halloween = {
+			Main = Color3.fromRGB(37, 35, 33),
+			Secondary = Color3.fromRGB(33, 32, 32),
+			Tertiary = Color3.fromRGB(255, 106, 0),
+
+			StrongText = Color3.fromHSV(0, 0, 1),		
+			WeakText = Color3.fromHSV(0, 0, 172/255)
+		},
 		Vaporwave = {},
 		OperaGX = {},
 		VisualStudio = {}
 	},
+ 
+
 	ColorPickerStyles = {
 		Legacy = 0,
 		Modern = 1
