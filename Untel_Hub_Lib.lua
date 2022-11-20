@@ -7,7 +7,7 @@ local Mouse = LocalPlayer:GetMouse()
 local HTTPService = game:GetService("HttpService")
 
 local Library = {
-Themes = {
+	Themes = {
 		Legacy = {
 			Main = Color3.fromHSV(262/360, 60/255, 34/255),
 			Secondary = Color3.fromHSV(240/360, 40/255, 63/255),
@@ -48,20 +48,10 @@ Themes = {
 			StrongText = Color3.fromHSV(0, 0, 1),        
 			WeakText = Color3.fromHSV(0, 0, 172/255)
 		},
-        Halloween = {
-			Main = Color3.fromRGB(37, 35, 33),
-			Secondary = Color3.fromRGB(33, 32, 32),
-			Tertiary = Color3.fromRGB(255, 106, 0),
-
-			StrongText = Color3.fromHSV(0, 0, 1),		
-			WeakText = Color3.fromHSV(0, 0, 172/255)
-		},
 		Vaporwave = {},
 		OperaGX = {},
 		VisualStudio = {}
 	},
- 
-
 	ColorPickerStyles = {
 		Legacy = 0,
 		Modern = 1
@@ -638,14 +628,14 @@ function Library:create(options)
 		Position = UDim2.new(0.5, 0, 1, -20),
 		Size = UDim2.new(1, -10, 1, -86)
 	}):round(7) -- Sept
-    local executor = identifyexecutor()
+
 	local status = core:object("TextLabel", {
 		AnchorPoint = Vector2.new(0, 1),
 		BackgroundTransparency = 1,
 		Position = UDim2.new(0, 5, 1, -6),
 		Size = UDim2.new(0.2, 0, 0, 10),
 		Font = Enum.Font.SourceSans,
-		Text = "Executor | "..executor,
+		Text = "Status | Idle",
 		Theme = {TextColor3 = "Tertiary"},
 		TextSize = 14,
 		TextXAlignment = Enum.TextXAlignment.Left
