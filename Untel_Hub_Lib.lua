@@ -34,10 +34,10 @@ Themes = {
 			StrongText = Color3.fromHSV(0, 0, 1),		
 			WeakText = Color3.fromHSV(0, 0, 172/255)
 		},
-		Halloween  = {
+		Rust = {
 			Main = Color3.fromRGB(37, 35, 33),
-			Secondary = Color3.fromRGB(33, 32, 32),
-			Tertiary = Color3.fromRGB(255, 106, 0),
+			Secondary = Color3.fromRGB(65, 63, 63),
+			Tertiary = Color3.fromRGB(237, 94, 38),
 
 			StrongText = Color3.fromHSV(0, 0, 1),		
 			WeakText = Color3.fromHSV(0, 0, 172/255)
@@ -48,6 +48,14 @@ Themes = {
 			Tertiary = Color3.fromRGB(51, 153, 137),
 
 			StrongText = Color3.fromHSV(0, 0, 1),        
+			WeakText = Color3.fromHSV(0, 0, 172/255)
+		},
+        Halloween = {
+			Main = Color3.fromRGB(37, 35, 33),
+			Secondary = Color3.fromRGB(33, 32, 32),
+			Tertiary = Color3.fromRGB(255, 106, 0),
+
+			StrongText = Color3.fromHSV(0, 0, 1),		
 			WeakText = Color3.fromHSV(0, 0, 172/255)
 		},
 		Vaporwave = {},
@@ -622,14 +630,15 @@ function Library:create(options)
 		Position = UDim2.new(0.5, 0, 1, -20),
 		Size = UDim2.new(1, -10, 1, -86)
 	}):round(7) -- Sept
-
+	local executor = identifyexecutor()
+	executor = string.gsub(executor, " ", "-")
 	local status = core:object("TextLabel", {
 		AnchorPoint = Vector2.new(0, 1),
 		BackgroundTransparency = 1,
 		Position = UDim2.new(0, 5, 1, -6),
 		Size = UDim2.new(0.2, 0, 0, 10),
 		Font = Enum.Font.SourceSans,
-		Text = "Discord | DAYUN#0279",
+		Text = "Discord - DAYUN#0279 | Executor - "..executor,
 		Theme = {TextColor3 = "Tertiary"},
 		TextSize = 14,
 		TextXAlignment = Enum.TextXAlignment.Left
