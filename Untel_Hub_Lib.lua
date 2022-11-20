@@ -631,7 +631,6 @@ function Library:create(options)
 		Size = UDim2.new(1, -10, 1, -86)
 	}):round(7) -- Sept
 	local executor = identifyexecutor()
-	executor = string.gsub(executor, " ", "-")
 	local status = core:object("TextLabel", {
 		AnchorPoint = Vector2.new(0, 1),
 		BackgroundTransparency = 1,
